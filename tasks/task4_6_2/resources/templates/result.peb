@@ -1,14 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-  <title>Dice Roll Result</title>
-</head>
-<body>
-<main class="container">
+{% extends "base.peb" %}
+
+{% block title %}Dice Roll Result{% endblock %}
+
+{% block content %}
 <h1>Result of Roll</h1>
 
 <section>
@@ -17,7 +11,7 @@
     <p>The die values are <strong>{{ roll.dieValues }}</strong></p>
     <p>The total is <strong>{{ roll.total }}</strong></p>
   {% else %}
-     <p>The result is <strong>{{ roll.total }}</strong></p>
+    <p>The result is <strong>{{ roll.total }}</strong></p>
   {% endif %}
 </section>
 
@@ -25,10 +19,4 @@
   <a role="button" href="{{ reroll_uri }}">Repeat</a>
   <a role="button" href="/">New Roll</a>
 </section>
-</main>
-
-<footer class="container">
-  <small><i>Task 4.6.2, Ktor Web Development Guide</i></small>
-</footer>
-</body>
-</html>
+{% endblock %}

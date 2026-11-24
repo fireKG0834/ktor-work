@@ -21,4 +21,30 @@ class ApplicationTest : FreeSpec({
     }
 
     // Add more tests here
+    "Path /hello/Joe greets Joe" {
+        testApplication {
+            configure()
+            val response = client.get("/hello/Joe")
+            response.status shouldBe HttpStatusCode.OK
+            response.bodyAsText() shouldBe "Hello Joe!"
+        }
+    }
+
+    "Path /hello/Ada greets Ada" {
+        testApplication {
+            configure()
+            val response = client.get("/hello/Ada")
+            response.status shouldBe HttpStatusCode.OK
+            response.bodyAsText() shouldBe "Hello Ada!"
+        }
+    }
+
+    "Path /hello/ without a name returns 404" {
+        testApplication {
+            configure()
+            val response = client.get("/hello/")
+            response.status shouldBe HttpStatusCode.NotFound
+        }
+    }
+
 })
